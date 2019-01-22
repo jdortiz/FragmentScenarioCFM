@@ -33,10 +33,10 @@ class AFragment : Fragment(), AView {
             presenter = serviceLocator.providePresenter()
             presenter.view = this
             val retainer = RetainedFragment()
+            retainer.presenter = presenter
             childFragmentManager.beginTransaction()
                 .add(retainer, RetainedFragment.retainedFragmentTag)
                 .commit()
-            retainer.presenter = presenter
         } else {
             presenter = fragment.presenter
             presenter.view = this
